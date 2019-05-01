@@ -1,0 +1,8 @@
+<%= div_for(doctor) do %>
+	<tr>
+	    <td><%= doctor.id %></td>
+	    <td><%= doctor.name %></td>
+	    <td><%= params[:start_time] %></td>
+	    <td><%= button_to 'Get', {:controller => "appointments", :action => "create", :appointment => {:doctor_id => doctor.id, :appointment_time=> params[:start_time]}} , :method=>:post  %></td>
+	 </tr>
+<% end %>

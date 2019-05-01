@@ -1,0 +1,36 @@
+<form action="/">
+	<div class="row">
+		<div class="col-md-3">
+			<div class='input-group date' id='datetimepicker1'>
+				Start Time: 
+			<% if params[:start_time].present? %>
+			  <input type='text' name="start_time" class="form-control" value="<%= params[:start_time]%>" />
+			<% else %>
+			  <input type='text' name="start_time" class="form-control" />
+			<% end %>
+			    <span class="input-group-addon">
+			      <span class="glyphicon glyphicon-calendar"></span>
+			    </span>
+			</div>		
+		</div>
+		<div class="col-md-2">
+			<input type="submit" id="find_doctor" name="find_doctor" value="Find Doctor"></input>		
+		</div>
+	</div>
+</form>
+
+<% if @doctors %>
+	<table class="table">
+	  <thead>
+	    <tr>
+	      <th scope="col">#</th>
+	      <th scope="col">Name</th>
+	      <th scope="col">Time</th>
+	      <th scope="col">Get Appointment</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+		<%= render partial: 'dashboard/doctor', collection: @doctors %>
+	  </tbody>
+	</table>
+<% end %>
